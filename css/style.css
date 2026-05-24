@@ -1,0 +1,769 @@
+/* Base Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: -webkit-fill-available;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: -webkit-fill-available;
+}
+
+/* Curtain Styles */
+.curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    pointer-events: none;
+}
+
+/* Curtain Wobble Animations */
+.curtain-left, .curtain-right {
+    width: 50%;
+    height: 100%;
+    background: url('../assets/images/red_curtain.png') center center / cover no-repeat;
+}
+
+@keyframes curtain-open-left {
+    0% { transform: translateX(0); }
+    80% { transform: translateX(-105%) rotateZ(-1deg); }
+    100% { transform: translateX(-100%) rotateZ(0deg); }
+}
+
+@keyframes curtain-open-right {
+    0% { transform: translateX(0); }
+    80% { transform: translateX(105%) rotateZ(1deg); }
+    100% { transform: translateX(100%) rotateZ(0deg); }
+}
+
+body.curtain-open .curtain-left {
+    animation: curtain-open-left 2s ease-in-out forwards;
+}
+body.curtain-open .curtain-right {
+    animation: curtain-open-right 2s ease-in-out forwards;
+}
+
+body.curtain-open .curtain {
+    animation: fade-out-curtain 0.3s ease 2s forwards;
+}
+
+@keyframes fade-out-curtain {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Nav Bar */
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+    z-index: 20;
+    border-bottom: 2px solid #ff66cc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left: Navigation */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.butterfly-logo {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    padding: 10px;
+    color: #ff66cc;
+    display: none;
+    margin-left: 10px;
+}
+
+/* Center: Nav links */
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    display: inline-block;
+    margin: 0 15px;
+    color: #ff66cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Right: Social icons */
+.nav-right {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.nav-right a {
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.nav-right a:hover {
+    transform: scale(1.2);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(57%) sepia(98%) saturate(496%) hue-rotate(297deg) brightness(102%) contrast(101%); /* #ff66cc */
+    transition: filter 0.3s ease;
+}
+
+.nav-right a:hover .social-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* #fff */
+}
+
+/* Drawer menu */
+.drawer-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    min-height: 100vh; /* Allow menu to expand beyond viewport */
+    background-color: rgba(0, 0, 0, 0.95);
+    padding-top: 60px;
+    padding-bottom: 20px; /* Extra space at bottom for scrolling */
+    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Enable vertical scrolling */
+    transition: left 0.4s ease;
+    border-left: 2px solid #ff66cc;
+    border-right: 2px solid #ff66cc;
+    box-sizing: border-box;
+}
+
+.drawer-menu a {
+    color: #ff66cc;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 15px 0;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.drawer-menu a:hover {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #ff66cc;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+/* Optimize drawer menu for landscape */
+@media (max-device-width: 896px) and (orientation: landscape) {
+    .drawer-menu {
+        padding-top: 40px; /* Reduce top padding to fit more content */
+        font-size: 18px; /* Slightly smaller font for links */
+    }
+    .drawer-menu a {
+        font-size: 18px;
+        margin: 10px 0; /* Reduce spacing between links */
+    }
+    .close-button {
+        top: 5px; /* Adjust close button position */
+    }
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 20px 20px;
+    opacity: 0;
+    transition: opacity 1.5s ease-in;
+    flex-grow: 1;
+}
+
+.index-main-content {
+    background: url('../assets/images/maijah_background.png') center center / cover no-repeat;
+}
+
+body.curtain-open .main-content {
+    opacity: 1;
+}
+
+.logo {
+    width: 300px;
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+.movie-title {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 0 10px #ff66cc;
+}
+
+.pitch-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.pitch-text a {
+    color: #ff66cc;
+    text-decoration: none;
+}
+
+.audio-player {
+    margin: 20px 0;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .audio-player {
+        max-width: 300px; /* Constrain width on desktop */
+        margin: 0 auto; /* Center player */
+    }
+}
+
+.text-wrapper {
+    padding-top: 140px;
+}
+
+.music-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 102, 204, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.4);
+}
+
+.music-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.music-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+
+/* NFT Intro Text */
+.nft-intro {
+    margin-bottom: 10px; /* Minimal spacing below intro text */
+    color: #fff;
+    font-size: 24px;
+}
+
+/* Snowflake animation */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 0;
+    color: #fff;
+    font-size: 1em;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Footer */
+.site-footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    z-index: 15;
+    opacity: 0; /* Hide footer initially */
+    transition: opacity 1.5s ease-in; /* Match main-content fade-in */
+}
+
+body.curtain-open .site-footer {
+    opacity: 1; /* Reveal footer as curtain opens */
+}
+
+.site-footer .social-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.site-footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    color: #ff66cc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.site-footer .social-icons a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.site-footer .social-icons .social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.site-footer .social-icons a:hover .social-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* #fff */
+}
+
+.site-footer .copyright {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Moved inline styles from index.php */
+@media (min-width: 769px) {
+    .page-wrapper .site-footer {
+        background-color: transparent !important;
+    }
+}
+
+/* Responsive */
+@media (max-device-width: 896px), (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .movie-title {
+        font-size: 32px;
+    }
+
+    .pitch-text {
+        font-size: 16px;
+    }
+
+    .nav-right .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .main-content {
+        padding: 90px 15px 15px;
+    }
+
+    .logo {
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .nft-intro {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .site-footer {
+        position: relative;
+        width: 100%;
+        padding: 10px 10px;
+        gap: 4px;
+        z-index: 15;
+        opacity: 0;
+        transition: opacity 1.5s ease-in;
+    }
+
+    body.curtain-open .site-footer {
+        opacity: 1;
+    }
+
+    .site-footer .social-icons {
+        gap: 4px;
+    }
+
+    .site-footer .social-icons a {
+        margin: 0 2px;
+        font-size: 12px;
+    }
+
+    .site-footer .social-icons .social-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .music-grid, .video-grid, .interview-grid, .nft-grid, .swag-grid, .contact-form {
+        padding: 20px 15px 15px;
+    }
+}
+
+/* Ensure desktop nav links are visible on larger screens */
+@media (min-device-width: 897px) and (min-width: 769px) {
+    .nav-links {
+        display: flex;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+/* Moved inline styles from other pages */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.music-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+.music-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.music-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+    border: none;
+}
+
+.interview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.interview-card {
+    background-color: rgba(255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.interview-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+.interview-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+
+.interview-card iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+    border: none;
+}
+
+.nft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.nft-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.nft-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+.nft-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.nft-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+
+.nft-button {
+    display: inline-block;
+    background-color: #ff66cc;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.nft-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.swag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 100px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.swag-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.swag-card:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+.swag-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.swag-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff66cc;
+    margin-bottom: 5px;
+}
+
+.swag-price {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.swag-button {
+    display: inline-block;
+    background-color: #ff66cc;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.swag-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff66cc;
+    border-radius: 8px;
+    color: #fff;
+    text-align: left;
+}
+
+.contact-form h1 {
+    text-align: center;
+    color: #ff66cc;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ff66cc;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+}
+
+.contact-form button {
+    background-color: #ff66cc;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Responsive tweaks for grids */
+@media (max-device-width: 896px), (max-width: 768px) {
+    .video-card iframe, .interview-card iframe {
+        height: 200px;
+    }
+}
