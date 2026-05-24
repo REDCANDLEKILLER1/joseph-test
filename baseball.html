@@ -267,6 +267,69 @@
             .field-shell { border-radius: 18px; }
             .hotspot { border-width: 1px; }
         }
+
+        /* Fan-facing cleanup: keep the baseball/music experience first */
+        .fan-toolbar { padding: 12px; }
+        .fan-toolbar .field-btn { min-width: 180px; text-align: center; }
+        @media (max-width: 768px) {
+            .baseball-main {
+                padding: 58px 0 18px;
+            }
+            .baseball-hero {
+                margin: 0 10px 10px;
+                padding: 12px 10px;
+                border-radius: 18px;
+            }
+            .baseball-kicker {
+                font-size: 10px;
+                letter-spacing: 0.16em;
+                margin-bottom: 5px;
+            }
+            .baseball-title {
+                font-size: clamp(28px, 10vw, 44px);
+                line-height: 1.04;
+            }
+            .baseball-subtitle {
+                max-width: 320px;
+                margin-top: 8px;
+                font-size: 15px;
+                line-height: 1.25;
+            }
+            .field-shell {
+                width: 100vw;
+                max-width: none;
+                margin: 8px 0 0;
+                border-left: 0;
+                border-right: 0;
+                border-radius: 0;
+                box-shadow: 0 10px 36px rgba(0,0,0,0.72), 0 0 24px rgba(255,102,204,0.28);
+            }
+            .field-map {
+                aspect-ratio: auto;
+                height: min(58vh, 420px);
+                min-height: 300px;
+            }
+            .field-map img {
+                object-fit: cover;
+                object-position: center center;
+                transform: scale(1.22);
+                transform-origin: center center;
+            }
+            .field-map::after {
+                background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
+            }
+            .field-toolbar {
+                padding: 12px 10px 14px;
+                gap: 8px;
+            }
+            .field-btn {
+                padding: 12px 18px;
+                font-size: 18px;
+            }
+            .site-footer {
+                padding-top: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -315,9 +378,10 @@
 
         <main class="baseball-main">
             <section class="baseball-hero">
-                <p class="baseball-kicker">Interactive Demo Page • Neon Stadium Hub</p>
+                <p class="baseball-kicker">Baseball Anthem Hub</p>
                 <h1 class="baseball-title">Maijah Taejon Baseball Anthem Field</h1>
-                <p class="baseball-subtitle">Tap the glowing stadium buttons to explore music, videos, socials, booking, sponsors, and future anthem campaigns. Every destination is demo-configurable and can be changed without rebuilding the page.</p>
+                <!-- Shorter subtitle for a cleaner mobile experience -->
+                <p class="baseball-subtitle">Tap the stadium. Follow the music.</p>
             </section>
 
             <section class="field-shell" aria-label="Interactive baseball stadium image map">
@@ -335,27 +399,12 @@
                     <a class="hotspot dugout-left" data-key="dugoutLeft" href="#"><span class="pin-label">Swag</span></a>
                     <a class="hotspot dugout-right" data-key="dugoutRight" href="#"><span class="pin-label">Contact</span></a>
                 </div>
-                <div class="field-toolbar">
-                    <button class="field-btn" type="button" id="toggleLabelsBtn">Show Click Zones</button>
-                    <button class="field-btn" type="button" id="openEditorBtn">Edit Demo Links</button>
+                <div class="field-toolbar fan-toolbar">
                     <a class="field-btn" href="contact.html">Book / Contact</a>
                 </div>
             </section>
 
-            <section class="baseball-grid" aria-label="Demo landing cards">
-                <article class="baseball-card"><h2>Music First</h2><p>Home plate can point to her anthem, latest single, full music page, Spotify, or a campaign-specific landing page.</p><a href="music.html">Open music</a></article>
-                <article class="baseball-card"><h2>Performance Hub</h2><p>The mound and scoreboard are strong positions for videos, anthem reels, booking promos, or a sponsor intro.</p><a href="videos.html">Open videos</a></article>
-                <article class="baseball-card"><h2>Sponsor Ready</h2><p>Outfield signs and dugout cards can become paid ad placements with direct business links.</p><a href="pitch.html">Open pitch deck</a></article>
-            </section>
-
-            <section class="sponsor-wall" aria-label="Sponsor placeholders">
-                <h2>Demo Sponsor Wall</h2>
-                <div class="sponsor-links">
-                    <a class="sponsor-link" data-key="sponsorOne" href="#">Sponsor Slot 1</a>
-                    <a class="sponsor-link" data-key="sponsorTwo" href="#">Sponsor Slot 2</a>
-                    <a class="sponsor-link" data-key="sponsorThree" href="#">Sponsor Slot 3</a>
-                </div>
-            </section>
+            <!-- Removed the card grid, sponsor wall, and public-facing developer note for a cleaner user experience -->
 
             <section class="dev-panel" id="devPanel" aria-label="Demo link editor">
                 <h2>Demo Link Editor</h2>
@@ -367,7 +416,6 @@
                     <button class="field-btn" type="button" id="exportLinksBtn">Copy Link Config</button>
                 </div>
             </section>
-            <p class="small-note">Demo note: links are placeholders based on existing site pages and known social links. They can be changed anytime when final destinations are confirmed.</p>
         </main>
 
         <footer class="site-footer">
@@ -440,7 +488,8 @@
                     const cfg = fieldLinks[key] || defaultFieldLinks[key];
                     if (!cfg || !cfg.url || cfg.url === '#') {
                         event.preventDefault();
-                        showToast('Demo slot ready. Add a link in Edit Demo Links.');
+                        // Inform the user how to edit links when the public editor button is hidden
+                        showToast('This link is coming soon.');
                         return;
                     }
                     event.preventDefault();
@@ -481,16 +530,23 @@
             applyLinks();
             showToast('Demo links saved in this browser.');
         }
-        document.getElementById('toggleLabelsBtn').addEventListener('click', () => {
-    const map = document.getElementById('fieldMap');
-    map.classList.toggle('show-zones');
-    document.getElementById('toggleLabelsBtn').textContent = map.classList.contains('show-zones') ? 'Hide Click Zones' : 'Show Click Zones';
-});
-        document.getElementById('openEditorBtn').addEventListener('click', () => {
-            const panel = document.getElementById('devPanel');
-            panel.classList.toggle('open');
-            if (panel.classList.contains('open')) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        const toggleLabelsBtn = document.getElementById('toggleLabelsBtn');
+        if (toggleLabelsBtn) {
+            toggleLabelsBtn.addEventListener('click', () => {
+                const map = document.getElementById('fieldMap');
+                map.classList.toggle('show-zones');
+                toggleLabelsBtn.textContent = map.classList.contains('show-zones') ? 'Hide Click Zones' : 'Show Click Zones';
+            });
+        }
+        // Only bind the demo link editor toggle if the button exists (hidden by default)
+        const openEditorBtn = document.getElementById('openEditorBtn');
+        if (openEditorBtn) {
+            openEditorBtn.addEventListener('click', () => {
+                const panel = document.getElementById('devPanel');
+                panel.classList.toggle('open');
+                if (panel.classList.contains('open')) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
         document.getElementById('saveLinksBtn').addEventListener('click', saveEditorValues);
         document.getElementById('resetLinksBtn').addEventListener('click', () => {
             localStorage.removeItem(BASEBALL_DEMO_STORAGE_KEY);
