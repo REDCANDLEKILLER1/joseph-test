@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swag - Maijah Taejon</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .swag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 100px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .swag-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid #ff66cc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .swag-card:hover {
+            transform: scale(1.05);
+            border-color: #fff;
+        }
+
+        .swag-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .swag-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff66cc;
+            margin-bottom: 5px;
+        }
+
+        .swag-price {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .swag-button {
+            display: inline-block;
+            background-color: #ff66cc;
+            color: #000;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .swag-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .swag-grid {
+                padding: 90px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-left">
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" role="button">☰</div>
+        </div>
+        <div class="nav-center">
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="music.html">MUSIC</a>
+                <a href="videos.html">VIDEOS</a>
+                <a href="baseball.html">BASEBALL</a>
+                <a href="bio.html">ABOUT</a>
+                <a href="interviews.html">INTERVIEWS</a>
+                <a href="musicnfts.html">MUSIC NFTS</a>
+                <a href="swag.html">SWAG</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="pitch.html">PITCH DECK</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="https://open.spotify.com/artist/1qxWE9LQMkj80ChJvv9OIA?si=CAS-k1KgRm-F-R46NCP36g&nd=1&dlsi=87e2a5fbcca64b34" target="_blank" aria-label="Spotify"><img src="assets/images/spotify.png" alt="Spotify" class="social-icon" /></a>
+            <a href="https://www.youtube.com/@maijahtaejon" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube" class="social-icon" /></a>
+            <a href="https://www.instagram.com/maijah_taejon/?igsh=MWFyY3ZrZmRmbzh3aA%3D%3D&utm_source=qr#" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram" class="social-icon" /></a>
+            <a href="https://www.facebook.com/people/Maijah-Taejon/61552516220241/" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook" class="social-icon" /></a>
+            <a href="https://x.com/MaijahTaejon" target="_blank" aria-label="X"><img src="assets/images/xapp.png" alt="X" class="social-icon" /></a>
+        </div>
+
+        <!-- Drawer menu -->
+        <div class="drawer-menu" id="drawerMenu" role="navigation" aria-hidden="true">
+            <div class="close-button" onclick="toggleMenu()" aria-label="Close menu">✖</div>
+            <a href="index.html">HOME</a>
+            <a href="music.html">MUSIC</a>
+            <a href="videos.html">VIDEOS</a>
+            <a href="baseball.html">BASEBALL</a>
+            <a href="bio.html">ABOUT</a>
+            <a href="interviews.html">INTERVIEWS</a>
+            <a href="musicnfts.html">MUSIC NFTS</a>
+            <a href="swag.html">SWAG</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="pitch.html">PITCH DECK</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Swag / Merch</h1>
+        <p>Grab your official Maijah Taejon swag!</p>
+
+        <div class="swag-grid">
+            <!-- Swag Card 1 -->
+            <div class="swag-card">
+                <img src="assets/images/music_placeholder.jpg" alt="Product 1" />
+                <div class="swag-title">T-Shirt</div>
+                <div class="swag-price">$25.00</div>
+                <a href="#" class="swag-button" target="_blank">Buy Now</a>
+            </div>
+
+            <!-- Swag Card 2 -->
+            <div class="swag-card">
+                <img src="assets/images/music_placeholder.jpg" alt="Product 2" />
+                <div class="swag-title">Hat</div>
+                <div class="swag-price">$20.00</div>
+                <a href="#" class="swag-button" target="_blank">Buy Now</a>
+            </div>
+
+            <!-- Swag Card 3 -->
+            <div class="swag-card">
+                <img src="assets/images/music_placeholder.jpg" alt="Product 3" />
+                <div class="swag-title">Sticker Pack</div>
+                <div class="swag-price">$10.00</div>
+                <a href="#" class="swag-button" target="_blank">Buy Now</a>
+            </div>
+
+            <!-- Add more swag cards as needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Follow Maijah Taejon:</p>
+        <div class="social-icons">
+            <a href="https://open.spotify.com/artist/1qxWE9LQMkj80ChJvv9OIA?si=CAS-k1KgRm-F-R46NCP36g&nd=1&dlsi=87e2a5fbcca64b34" target="_blank" aria-label="Spotify"><img src="assets/images/spotify.png" alt="Spotify" class="social-icon" /> Spotify</a>
+            <a href="https://www.youtube.com/@maijahtaejon" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube" class="social-icon" /> YouTube</a>
+            <a href="https://www.instagram.com/maijah_taejon/?igsh=MWFyY3ZrZmRmbzh3aA%3D%3D&utm_source=qr#" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram" class="social-icon" /> Instagram</a>
+            <a href="https://www.facebook.com/people/Maijah-Taejon/61552516220241/" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook" class="social-icon" /> Facebook</a>
+            <a href="https://x.com/MaijahTaejon" target="_blank" aria-label="X"><img src="assets/images/xapp.png" alt="X" class="social-icon" /> X</a>
+        </div>
+        <p class="copyright">© 2025 Maijah Taejon. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

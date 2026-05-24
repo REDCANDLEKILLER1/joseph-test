@@ -1,0 +1,42 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/baseball",
+      "destination": "/baseball.html"
+    },
+    {
+      "source": "/music",
+      "destination": "/music.html"
+    },
+    {
+      "source": "/videos",
+      "destination": "/videos.html"
+    },
+    {
+      "source": "/bio",
+      "destination": "/bio.html"
+    },
+    {
+      "source": "/interviews",
+      "destination": "/interviews.html"
+    },
+    {
+      "source": "/musicnfts",
+      "destination": "/musicnfts.html"
+    },
+    {
+      "source": "/swag",
+      "destination": "/swag.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/pitch",
+      "destination": "/pitch.html"
+    }
+  ]
+}
