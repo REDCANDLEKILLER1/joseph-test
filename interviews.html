@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interviews - Maijah Taejon</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .interview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .interview-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid #ff66cc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interview-card:hover {
+            transform: scale(1.05);
+            border-color: #fff;
+        }
+
+        .interview-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff66cc;
+            margin-bottom: 10px;
+        }
+
+        .interview-card iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .interview-grid {
+                padding: 20px 15px 15px;
+            }
+
+            .interview-card iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-left">
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" role="button">☰</div>
+        </div>
+        <div class="nav-center">
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="music.html">MUSIC</a>
+                <a href="videos.html">VIDEOS</a>
+                        <a href="baseball.html">BASEBALL</a>
+                <a href="bio.html">ABOUT</a>
+                <a href="interviews.html">INTERVIEWS</a>
+                <a href="musicnfts.html">MUSIC NFTS</a>
+                <a href="swag.html">SWAG</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="pitch.html">PITCH DECK</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="https://open.spotify.com/artist/1qxWE9LQMkj80ChJvv9OIA?si=CAS-k1KgRm-F-R46NCP36g&nd=1&dlsi=87e2a5fbcca64b34" target="_blank" aria-label="Spotify"><img src="assets/images/spotify.png" alt="Spotify" class="social-icon" /></a>
+            <a href="https://www.youtube.com/@maijahtaejon" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube" class="social-icon" /></a>
+            <a href="https://www.instagram.com/maijah_taejon/?igsh=MWFyY3ZrZmRmbzh3aA%3D%3D&utm_source=qr#" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram" class="social-icon" /></a>
+            <a href="https://www.facebook.com/people/Maijah-Taejon/61552516220241/" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook" class="social-icon" /></a>
+            <a href="https://x.com/MaijahTaejon" target="_blank" aria-label="X"><img src="assets/images/xapp.png" alt="X" class="social-icon" /></a>
+        </div>
+
+        <!-- Drawer menu -->
+        <div class="drawer-menu" id="drawerMenu" role="navigation" aria-hidden="true">
+            <div class="close-button" onclick="toggleMenu()" aria-label="Close menu">✖</div>
+            <a href="index.html">HOME</a>
+            <a href="music.html">MUSIC</a>
+            <a href="videos.html">VIDEOS</a>
+                        <a href="baseball.html">BASEBALL</a>
+            <a href="bio.html">ABOUT</a>
+            <a href="interviews.html">INTERVIEWS</a>
+            <a href="musicnfts.html">MUSIC NFTS</a>
+            <a href="swag.html">SWAG</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="pitch.html">PITCH DECK</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Interviews</h1>
+        <p>Listen to and watch interviews with Maijah Taejon!</p>
+
+        <div class="interview-grid">
+            <!-- Interview Card 1 (YouTube) -->
+            <div class="interview-card">
+                <div class="interview-title">Podcast Interview 1</div>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+
+            <!-- Interview Card 2 (SoundCloud) -->
+            <div class="interview-card">
+                <div class="interview-title">Radio Interview 2</div>
+                <iframe scrolling="no" frameborder="no" allow="autoplay" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123456789&color=%23ff66cc&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+                </iframe>
+            </div>
+
+            <!-- Add more interview cards as needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Follow Maijah Taejon:</p>
+        <div class="social-icons">
+            <a href="https://open.spotify.com/artist/1qxWE9LQMkj80ChJvv9OIA?si=CAS-k1KgRm-F-R46NCP36g&nd=1&dlsi=87e2a5fbcca64b34" target="_blank" aria-label="Spotify"><img src="assets/images/spotify.png" alt="Spotify" class="social-icon" /> Spotify</a>
+            <a href="https://www.youtube.com/@maijahtaejon" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube" class="social-icon" /> YouTube</a>
+            <a href="https://www.instagram.com/maijah_taejon/?igsh=MWFyY3ZrZmRmbzh3aA%3D%3D&utm_source=qr#" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram" class="social-icon" /> Instagram</a>
+            <a href="https://www.facebook.com/people/Maijah-Taejon/61552516220241/" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook" class="social-icon" /> Facebook</a>
+            <a href="https://x.com/MaijahTaejon" target="_blank" aria-label="X"><img src="assets/images/xapp.png" alt="X" class="social-icon" /> X</a>
+        </div>
+        <p class="copyright">© 2025 Maijah Taejon. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
