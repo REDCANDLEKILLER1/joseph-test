@@ -282,7 +282,7 @@
                     <a href="index.html">HOME</a>
                     <a href="music.html">MUSIC</a>
                     <a href="videos.html">VIDEOS</a>
-                    <a href="baseball.html">BASEBALL</a>
+                        <a href="baseball.html">BASEBALL</a>
                     <a href="bio.html">ABOUT</a>
                     <a href="interviews.html">INTERVIEWS</a>
                     <a href="musicnfts.html">MUSIC NFTS</a>
@@ -303,7 +303,7 @@
                 <a href="index.html">HOME</a>
                 <a href="music.html">MUSIC</a>
                 <a href="videos.html">VIDEOS</a>
-                <a href="baseball.html">BASEBALL</a>
+                        <a href="baseball.html">BASEBALL</a>
                 <a href="bio.html">ABOUT</a>
                 <a href="interviews.html">INTERVIEWS</a>
                 <a href="musicnfts.html">MUSIC NFTS</a>
@@ -388,10 +388,10 @@
     <script>
         const BASEBALL_DEMO_STORAGE_KEY = 'maijahBaseballFieldLinks.v1';
         const defaultFieldLinks = {
-            scoreboard: { name: 'Scoreboard / Main Feature', label: 'Main Feature', url: 'pitch.html', toast: 'Opening the main feature...' },
-            leftfield: { name: 'Left Field Sponsor', label: 'Sponsor L', url: 'pitch.html', toast: 'Opening sponsor slot...' },
+            scoreboard: { name: 'Scoreboard / Main Feature', label: 'Main Feature', url: 'pitch.php', toast: 'Opening the main feature...' },
+            leftfield: { name: 'Left Field Sponsor', label: 'Sponsor L', url: 'pitch.php', toast: 'Opening sponsor slot...' },
             centerfield: { name: 'Center Field / Booking', label: 'Booking', url: 'contact.html', toast: 'Opening booking/contact...' },
-            rightfield: { name: 'Right Field Sponsor', label: 'Sponsor R', url: 'pitch.html', toast: 'Opening sponsor slot...' },
+            rightfield: { name: 'Right Field Sponsor', label: 'Sponsor R', url: 'pitch.php', toast: 'Opening sponsor slot...' },
             mound: { name: 'Pitcher Mound / Videos', label: 'Videos', url: 'videos.html', toast: 'Opening videos...' },
             home: { name: 'Home Plate / Music', label: 'Music', url: 'music.html', toast: 'Opening music...' },
             first: { name: 'First Base / Spotify', label: 'Spotify', url: 'https://open.spotify.com/artist/1qxWE9LQMkj80ChJvv9OIA?si=CAS-k1KgRm-F-R46NCP36g&nd=1&dlsi=87e2a5fbcca64b34', toast: 'Opening Spotify...' },
@@ -399,9 +399,9 @@
             third: { name: 'Third Base / Instagram', label: 'Instagram', url: 'https://www.instagram.com/maijah_taejon/?igsh=MWFyY3ZrZmRmbzh3aA%3D%3D&utm_source=qr#', toast: 'Opening Instagram...' },
             dugoutLeft: { name: 'Left Dugout / Swag', label: 'Swag', url: 'swag.html', toast: 'Opening swag...' },
             dugoutRight: { name: 'Right Dugout / Contact', label: 'Contact', url: 'contact.html', toast: 'Opening contact...' },
-            sponsorOne: { name: 'Sponsor Card 1', label: 'Sponsor Slot 1', url: 'pitch.html', toast: 'Opening sponsor slot 1...' },
-            sponsorTwo: { name: 'Sponsor Card 2', label: 'Sponsor Slot 2', url: 'pitch.html', toast: 'Opening sponsor slot 2...' },
-            sponsorThree: { name: 'Sponsor Card 3', label: 'Sponsor Slot 3', url: 'pitch.html', toast: 'Opening sponsor slot 3...' }
+            sponsorOne: { name: 'Sponsor Card 1', label: 'Sponsor Slot 1', url: 'pitch.php', toast: 'Opening sponsor slot 1...' },
+            sponsorTwo: { name: 'Sponsor Card 2', label: 'Sponsor Slot 2', url: 'pitch.php', toast: 'Opening sponsor slot 2...' },
+            sponsorThree: { name: 'Sponsor Card 3', label: 'Sponsor Slot 3', url: 'pitch.php', toast: 'Opening sponsor slot 3...' }
         };
         let fieldLinks = loadFieldLinks();
         function loadFieldLinks() {
@@ -482,10 +482,10 @@
             showToast('Demo links saved in this browser.');
         }
         document.getElementById('toggleLabelsBtn').addEventListener('click', () => {
-            const map = document.getElementById('fieldMap');
-            map.classList.toggle('labels-off');
-            document.getElementById('toggleLabelsBtn').textContent = map.classList.contains('labels-off') ? 'Show Hotspot Labels' : 'Show Click Zones';
-        });
+    const map = document.getElementById('fieldMap');
+    map.classList.toggle('show-zones');
+    document.getElementById('toggleLabelsBtn').textContent = map.classList.contains('show-zones') ? 'Hide Click Zones' : 'Show Click Zones';
+});
         document.getElementById('openEditorBtn').addEventListener('click', () => {
             const panel = document.getElementById('devPanel');
             panel.classList.toggle('open');

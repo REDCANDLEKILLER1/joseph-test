@@ -49,7 +49,7 @@
                     <a href="index.html">HOME</a>
                     <a href="music.html">MUSIC</a>
                     <a href="videos.html">VIDEOS</a>
-                    <a href="baseball.html">BASEBALL</a>
+                        <a href="baseball.html">BASEBALL</a>
                     <a href="bio.html">ABOUT</a>
                     <a href="interviews.html">INTERVIEWS</a>
                     <a href="musicnfts.html">MUSIC NFTS</a>
@@ -72,7 +72,7 @@
                 <a href="index.html">HOME</a>
                 <a href="music.html">MUSIC</a>
                 <a href="videos.html">VIDEOS</a>
-                <a href="baseball.html">BASEBALL</a>
+                        <a href="baseball.html">BASEBALL</a>
                 <a href="bio.html">ABOUT</a>
                 <a href="interviews.html">INTERVIEWS</a>
                 <a href="musicnfts.html">MUSIC NFTS</a>
